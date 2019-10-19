@@ -19,5 +19,12 @@ def get_image_meta(dockerID, imgName):
         'Connection': "keep-alive",
         'cache-control': "no-cache"
     }
-    response = requests.request("GET", url, headers=headers).json()
-    return response
+    response = requests.request("GET", url, headers=headers)
+    if response.status_code == 404:
+        return None
+    else:
+        json_response = response.json()
+        return json_response
+
+# Testing:
+print(get_image_meta("mattgleich", "notFound"))
