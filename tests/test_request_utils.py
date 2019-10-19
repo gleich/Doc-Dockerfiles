@@ -4,7 +4,7 @@ import json
 def test_get_image_meta():
     """Tests the get_image_meta function 
     """
-    instance = request_utils.get_image_meta("mattgleich", "fib-calc-client")
+    working_instance = request_utils.get_image_meta("mattgleich", "fib-calc-client")
     expected_response = {
         "user": "mattgleich",
         "name": "fib-calc-client",
@@ -28,4 +28,6 @@ def test_get_image_meta():
             "admin": False
         }
     }
-    assert instance == expected_response
+    assert working_instance == expected_response
+    failing_instance = request_utils.get_image_meta("mattgleich", "fakeImageName")
+    assert failing_instance == 404
