@@ -40,10 +40,12 @@ def main():
             docker_hub_url = "https://hub.docker.com/r/" + \
                 docker_username + "/" + folder_name
             registry_info = "[View on DockerHub](" + docker_hub_url + ")"
-            description = 
-        else
+            description = image_meta_data["description"]
+        else:
+            registry_info = "**Not on Docker Hub**"
+            description = "No description, look in Dockerfile"
         filled_template = README_template.format(dockerID=docker_username, imageName=folder_name,
-                                                    description=description, registry=registry_info)
+                                                 description=description, registry=registry_info)
         intermediate_txt_file_path = path.strip(
             "Dockerfile") + "/README.txt"
         subprocess.call(["touch", intermediate_txt_file_path])
@@ -51,3 +53,4 @@ def main():
             intermediate_txt_file.write(filled_template)
         subprocess.call(["mv", intermediate_txt_file_path, path.strip(
             "Dockerfile") + "/README.MD"])
+        print("Created README.md in")
