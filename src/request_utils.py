@@ -27,4 +27,4 @@ def get_image_meta(dockerID, imgName):
         return json_response
 
 # Testing:
-print(get_image_meta("mattgleich", "notFound"))
+# print(get_image_meta("mattgleich", "notFound"))
