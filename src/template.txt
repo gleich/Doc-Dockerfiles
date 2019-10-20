@@ -10,6 +10,4 @@
 
 ## Running
 
-```bash
-docker run {dockerID}/{imageName}
-```
+Look inside the Dockerfile to find the commands needed to run the container
