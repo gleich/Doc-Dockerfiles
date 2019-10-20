@@ -1,6 +1,6 @@
 # {dockerID}/{imageName}
 
-![Docker Pulls](https://img.shields.io/docker/pulls/{dockerID}/{imageName})
+{DockerHubPulls}
 
 {description}
 
