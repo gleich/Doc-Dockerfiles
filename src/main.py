@@ -49,7 +49,7 @@ def main():
         with open(intermediate_txt_file_path, "w") as intermediate_txt_file:
             intermediate_txt_file.write(filled_template)
         subprocess.call(["mv", intermediate_txt_file_path, path.strip(
-            "Dockerfile") + "/README.MD"])
+            "Dockerfile") + "/README.md"])
         print("Created README.md in", folder_name, "folder")
 
 main()
