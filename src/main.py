@@ -4,36 +4,33 @@ import argparse
 
 import request_utils
 
-
 def main():
     """Runs the Auto-Doc-Dockerfiles program
     """
-    # Argument parser:
-    parser = argparse.ArgumentParser(description="Parser for the program")
-    parser.add_argument("-u", "--dockerUsername", type=str,
-                        help="Name of the user that has all the images on docker-hub")
-    parser.add_argument("-p", "--folderPath", type=str,
-                        help="The location from root of the folder or git repo where the folders of images are")
-    args = parser.parse_args()
-    folder_path = args.folderPath
-    docker_username = args.dockerUsername
+    folder_path = "repo"
     # Loading template before moving directories
     with open("template.txt", "r") as template_file:
         README_template = template_file.read()
     # Changing directory into the location of the folders of images are
     os.chdir(folder_path)
-    # Getting location of all the Dockerfiles
+    print("Changed directory into", str(os.getcwd()))
+    with open("dockerID.txt") as dockerID_file:
+        docker_username = dockerID_file.read().strip("\n")
+        print("Got docker username")
+    # Getting location of all the Dockerfiles with no README.md files
     path_of_all_dockerfiles = os.popen(
         'find . -name "Dockerfile"').read().split("\n")
+    del path_of_all_dockerfiles[-1]
     dockerfiles_to_check = []
     for path in path_of_all_dockerfiles:
+        path_to_dockerfile = str(path).split("/")[0:-1]
         files_around_dockerfile = os.listdir(
-            path_of_all_dockerfiles).strip("Dockerfile")
-        if "README.md" in files_around_dockerfile:
+            "/".join(path_to_dockerfile))
+        if "README.md" not in files_around_dockerfile:
             dockerfiles_to_check.append(path)
     # Meat of it all, get meta data on Docker Hub and create the README.md
     for path in dockerfiles_to_check:
-        folder_name = path.strip("Dockerfile").split("/")[-1]
+        folder_name = path.strip("Dockerfile").split("/")[-2].strip("\n")
         image_meta_data = request_utils.get_image_meta(
             docker_username, folder_name)
         if image_meta_data != None:
@@ -47,10 +44,12 @@ def main():
         filled_template = README_template.format(dockerID=docker_username, imageName=folder_name,
                                                  description=description, registry=registry_info)
         intermediate_txt_file_path = path.strip(
-            "Dockerfile") + "/README.txt"
+            "Dockerfile") + "README.txt"
         subprocess.call(["touch", intermediate_txt_file_path])
         with open(intermediate_txt_file_path, "w") as intermediate_txt_file:
             intermediate_txt_file.write(filled_template)
         subprocess.call(["mv", intermediate_txt_file_path, path.strip(
             "Dockerfile") + "/README.MD"])
-        print("Created README.md in")
+        print("Created README.md in", folder_name, "folder")
+
+main()
