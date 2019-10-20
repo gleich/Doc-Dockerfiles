@@ -4,6 +4,7 @@ import argparse
 
 import request_utils
 
+
 def main():
     """Runs the Auto-Doc-Dockerfiles program
     """
@@ -38,11 +39,13 @@ def main():
                 docker_username + "/" + folder_name
             registry_info = "[View on DockerHub](" + docker_hub_url + ")"
             description = image_meta_data["description"]
+            pulls_badge = "![Docker Pulls](https://img.shields.io/docker/pulls/{dockerID}/{imageName})"
         else:
             registry_info = "**Not on Docker Hub**"
             description = "No description, look in Dockerfile"
+            pulls_badge = ""
         filled_template = README_template.format(dockerID=docker_username, imageName=folder_name,
-                                                 description=description, registry=registry_info)
+                                                 description=description, registry=registry_info, DockerHubPulls=pulls_badge)
         intermediate_txt_file_path = path.strip(
             "Dockerfile") + "README.txt"
         subprocess.call(["touch", intermediate_txt_file_path])
@@ -51,5 +54,6 @@ def main():
         subprocess.call(["mv", intermediate_txt_file_path, path.strip(
             "Dockerfile") + "/README.md"])
         print("Created README.md in", folder_name, "folder")
+
 
 main()
