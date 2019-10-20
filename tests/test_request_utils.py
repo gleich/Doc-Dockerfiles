@@ -30,4 +30,4 @@ def test_get_image_meta():
     }
     assert working_instance == expected_response
     failing_instance = request_utils.get_image_meta("mattgleich", "fakeImageName")
-    assert failing_instance == 404
+    assert failing_instance == None
