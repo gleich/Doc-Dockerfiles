@@ -50,9 +50,7 @@ Each README is based off the template show below. The items in {} are filled in 
 {registry}
 
 ## Running
-
-```bash
-docker run {dockerID}/{imageName}
+Look inside the Dockerfile to find the commands needed to run the container
 ```
 
 Here is a quick table explaining each var wrapped in {} that is filled in by the program:
