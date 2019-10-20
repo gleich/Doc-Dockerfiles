@@ -70,7 +70,7 @@ Below is a list of all the features of this program:
 
 1. Create README.md files
 2. If there is a README.md file already for the folder where the Dockerfile is the don't make a new one
-2. Automatically find image meta data on Docker Hub
+3. Automatically find image meta data on Docker Hub
 
 ## Requirements
 
