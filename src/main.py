@@ -39,7 +39,8 @@ def main():
                 docker_username + "/" + folder_name
             registry_info = "[View on DockerHub](" + docker_hub_url + ")"
             description = image_meta_data["description"]
-            pulls_badge = "![Docker Pulls](https://img.shields.io/docker/pulls/{dockerID}/{imageName})"
+            pulls_badge = "![Docker Pulls](https://img.shields.io/docker/pulls/{dockerID}/{imageName})".format(
+                dockerID=docker_username, imageName=folder_name)
         else:
             registry_info = "**Not on Docker Hub**"
             description = "No description, look in Dockerfile"
