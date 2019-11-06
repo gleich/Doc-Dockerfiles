@@ -2,7 +2,7 @@ import request_utils
 import json
 
 def test_get_image_meta():
-    """Tests the get_image_meta function 
+    """Tests the get_image_meta function
     """
     working_instance = request_utils.get_image_meta("mattgleich", "fib-calc-client")
     expected_response = {
@@ -16,7 +16,7 @@ def test_get_image_meta():
         "is_automated": False,
         "can_edit": False,
         "star_count": 0,
-        "pull_count": 4,
+        "pull_count": 7,
         "last_updated": "2019-09-29T18:52:43.923069Z",
         "is_migrated": False,
         "has_starred": False,
