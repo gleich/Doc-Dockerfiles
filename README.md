@@ -1,14 +1,14 @@
-# Auto-Doc-Dockerfiles
+# Doc-Dockerfiles
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/Auto-Doc-Dockerfiles) ![GitHub repo size](https://img.shields.io/github/repo-size/Matt-Gleich/Auto-Doc-Dockerfiles) ![GitHub contributors](https://img.shields.io/github/contributors/Matt-Gleich/Auto-Doc-Dockerfiles) ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/auto-doc-dockerfiles)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/Doc-Dockerfiles) ![GitHub repo size](https://img.shields.io/github/repo-size/Matt-Gleich/Doc-Dockerfiles) ![GitHub contributors](https://img.shields.io/github/contributors/Matt-Gleich/Doc-Dockerfiles) ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/doc-dockerfiles)
 
 ## Github Actions
 
 | Action                                                                                                                                                                                      | Action Description                       |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
-| [![Actions Status](https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/workflows/Python-Versions/badge.svg)](https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/actions) | Testing for Python 3.6, 3.7, and 3.7-dev |
-| [![Actions Status](https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/workflows/Python-Cron/badge.svg)](https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/actions)     | Cron job for the Python-Versions action  |
-| [![Actions Status](https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/workflows/Docker-Hub/badge.svg)](https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/actions)      | Pushing Image to Docker Hub              |
+| [![Actions Status](https://github.com/Matt-Gleich/Doc-Dockerfiles/workflows/Python-Versions/badge.svg)](https://github.com/Matt-Gleich/Doc-Dockerfiles/actions) | Testing for Python 3.6, 3.7, and 3.7-dev |
+| [![Actions Status](https://github.com/Matt-Gleich/Doc-Dockerfiles/workflows/Python-Cron/badge.svg)](https://github.com/Matt-Gleich/Doc-Dockerfiles/actions)     | Cron job for the Python-Versions action  |
+| [![Actions Status](https://github.com/Matt-Gleich/Doc-Dockerfiles/workflows/Docker-Hub/badge.svg)](https://github.com/Matt-Gleich/Doc-Dockerfiles/actions)      | Pushing Image to Docker Hub              |
 
 ## Description
 
@@ -59,7 +59,7 @@ Here is a quick table explaining each var wrapped in {} that is filled in by the
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | {dockerID}       | The id (username) for which the image is registered under on Docker Hub. The program knows this ID because it reads it in from the dockerID.txt file that is places in root of the project folder as seen in the diagram above.                             |
 | {imageName}      | The name of the image. The program knows this name because is should be the name of the folder that the docker files is located in.                                                                                                                         |
-| {DockerHubPulls} | The amount of pulls the image has on docker hub. If the image is not found on docker hub under the defined dockerID the it will not be displayed. An example would be: ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/auto-doc-dockerfiles) |
+| {DockerHubPulls} | The amount of pulls the image has on docker hub. If the image is not found on docker hub under the defined dockerID the it will not be displayed. An example would be: ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/Doc-Dockerfiles) |
 | {registry}       | Url to the image on Docker Hub. If the image isn't found on Docker then it will just say `No description, look in Dockerfile`                                                                                                                               |
 
 ## Features
@@ -88,7 +88,7 @@ version: "3"
 
 services:
   auto-doc:
-    image: mattgleich/auto-doc-dockerfiles
+    image: mattgleich/Doc-Dockerfiles
     volumes: 
       - ~/Documents/Github/Dockerfiles:/src/repo
 ```
@@ -105,4 +105,4 @@ docker-compose up
 
 | Image Tag                                                                                         | Image Description                                  |
 |---------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| [latest](https://cloud.docker.com/u/mattgleich/repository/docker/mattgleich/auto-doc-dockerfiles/general) | Newest Docker Image created. |
+| [latest](https://cloud.docker.com/u/mattgleich/repository/docker/mattgleich/Doc-Dockerfiles/general) | Newest Docker Image created. |
