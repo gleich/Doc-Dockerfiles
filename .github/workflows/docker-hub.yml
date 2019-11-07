@@ -18,7 +18,7 @@ jobs:
           echo ${{ secrets.docker_password }} | docker login -u ${{ secrets.docker_id }} --password-stdin
       - name: Building Image
         run: |
-          docker build -t mattgleich/auto-doc-dockerfiles .
+          docker build -t mattgleich/doc-dockerfiles .
       - name: Pushing to Docker Hub
         run: |
-          docker push mattgleich/auto-doc-dockerfiles
+          docker push mattgleich/doc-dockerfiles
