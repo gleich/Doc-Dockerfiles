@@ -1,4 +1,4 @@
-FROM python:3.6-stretch
+FROM jfloff/alpine-python:3.7
 
 LABEL maintainer "matthewgleich@gmail.com"
 LABEL description "Look on https://github.com/Matt-Gleich/Auto-Doc-Dockerfiles/README.md"
